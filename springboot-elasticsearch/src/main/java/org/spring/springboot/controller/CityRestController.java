@@ -13,20 +13,22 @@ import java.util.List;
  * Created by bysocket on 03/05/2017.
  */
 @RestController
-public class CityRestController {
+public class CityRestController
+{
 
-    @Autowired
-    private CityService cityService;
+  @Autowired
+  private CityService cityService;
 
-    @RequestMapping(value = "/api/city", method = RequestMethod.POST)
-    public Long createCity(@RequestBody City city) {
-        return cityService.saveCity(city);
-    }
+  @RequestMapping(value = "/api/city", method = RequestMethod.POST)
+  public Long createCity(@RequestBody City city)
+  {
+    return cityService.saveCity(city);
+  }
 
-    @RequestMapping(value = "/api/city/search", method = RequestMethod.GET)
-    public List<City> searchCity(@RequestParam(value = "pageNumber") Integer pageNumber,
-                                 @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                                 @RequestParam(value = "searchContent") String searchContent) {
-        return cityService.searchCity(pageNumber,pageSize,searchContent);
-    }
+  @RequestMapping(value = "/api/city/search", method = RequestMethod.GET)
+  public List<City> searchCity(@RequestParam(value = "pageNumber") Integer pageNumber,
+      @RequestParam(value = "pageSize", required = false) Integer pageSize, @RequestParam(value = "searchContent") String searchContent)
+  {
+    return cityService.searchCity(pageNumber, pageSize, searchContent);
+  }
 }

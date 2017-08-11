@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by xchunzhao on 02/05/2017.
  */
 @RestController
-public class CityRestController {
+public class CityRestController
+{
 
-    @Autowired
-    private CityService cityService;
+  @Autowired
+  private CityService cityService;
 
-    @RequestMapping(value = "/api/city", method = RequestMethod.GET)
-    public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName) {
-        return cityService.findCityByName(cityName);
-    }
+  @RequestMapping(value = "/api/city", method = RequestMethod.GET)
+  public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName)
+  {
+    return cityService.findCityByName(cityName);
+  }
 
 }

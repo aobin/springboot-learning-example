@@ -13,6 +13,7 @@ import java.util.List;
  * <p>
  * Created by bysocket on 20/06/2017.
  */
-public interface CityRepository extends ElasticsearchRepository<City, Long> {
+public interface CityRepository extends ElasticsearchRepository<City, Long>
+{
 
 }

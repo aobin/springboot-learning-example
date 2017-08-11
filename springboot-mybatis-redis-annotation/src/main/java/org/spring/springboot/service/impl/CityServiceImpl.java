@@ -17,29 +17,32 @@ import java.util.Map;
  * Created by bysocket on 07/02/2017.
  */
 @Service
-public class CityServiceImpl implements CityService {
+public class CityServiceImpl implements CityService
+{
 
+  // 模拟数据库存储
+  private Map<String, City> cityMap = new HashMap<String, City>();
 
-    // 模拟数据库存储
-    private Map<String, City> cityMap = new HashMap<String, City>();
+  public void saveCity(City city)
+  {
+    // 模拟数据库插入操作
+    cityMap.put(city.getCityName(), city);
+  }
 
-    public void saveCity(City city){
-        // 模拟数据库插入操作
-        cityMap.put(city.getCityName(), city);
-    }
+  @Cacheable(value = "baseCityInfo")
+  public City getCityByName(String cityName)
+  {
+    // 模拟数据库查询并返回
+    return cityMap.get(cityName);
+  }
 
-    @Cacheable(value = "baseCityInfo")
-    public City getCityByName(String cityName){
-        // 模拟数据库查询并返回
-        return cityMap.get(cityName);
-    }
-
-    @CachePut(value = "baseCityInfo")
-    public void updateCityDescription(String cityName, String description){
-        City city = cityMap.get(cityName);
-        city.setDescription(description);
-        // 模拟更新数据库
-        cityMap.put(cityName, city);
-    }
+  @CachePut(value = "baseCityInfo")
+  public void updateCityDescription(String cityName, String description)
+  {
+    City city = cityMap.get(cityName);
+    city.setDescription(description);
+    // 模拟更新数据库
+    cityMap.put(cityName, city);
+  }
 
 }

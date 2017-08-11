@@ -21,47 +21,46 @@ import java.util.List;
 
 /**
  * 城市 ES 业务逻辑实现类
- *
+ * <p>
  * Created by bysocket on 07/02/2017.
  */
 @Service
-public class CityESServiceImpl implements CityService {
+public class CityESServiceImpl implements CityService
+{
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CityESServiceImpl.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(CityESServiceImpl.class);
 
-    @Autowired
-    CityRepository cityRepository;
+  @Autowired
+  CityRepository cityRepository;
 
-    @Override
-    public Long saveCity(City city) {
+  @Override
+  public Long saveCity(City city)
+  {
 
-        City cityResult = cityRepository.save(city);
-        return cityResult.getId();
-    }
+    City cityResult = cityRepository.save(city);
+    return cityResult.getId();
+  }
 
-    @Override
-    public List<City> searchCity(Integer pageNumber,
-                                 Integer pageSize,
-                                 String searchContent) {
-        // 分页参数
-        Pageable pageable = new PageRequest(pageNumber, pageSize);
+  @Override
+  public List<City> searchCity(Integer pageNumber, Integer pageSize, String searchContent)
+  {
+    // 分页参数
+    Pageable pageable = new PageRequest(pageNumber, pageSize);
 
-        // Function Score Query
-        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
-                .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("cityname", searchContent)),
-                    ScoreFunctionBuilders.weightFactorFunction(1000))
-                .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("description", searchContent)),
-                        ScoreFunctionBuilders.weightFactorFunction(100));
+    // Function Score Query
+    FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
+        .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("cityname", searchContent)),
+            ScoreFunctionBuilders.weightFactorFunction(1000))
+        .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("description", searchContent)),
+            ScoreFunctionBuilders.weightFactorFunction(100));
 
-        // 创建搜索 DSL 查询
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withPageable(pageable)
-                .withQuery(functionScoreQueryBuilder).build();
+    // 创建搜索 DSL 查询
+    SearchQuery searchQuery = new NativeSearchQueryBuilder().withPageable(pageable).withQuery(functionScoreQueryBuilder).build();
 
-        LOGGER.info("\n searchCity(): searchContent [" + searchContent + "] \n DSL  = \n " + searchQuery.getQuery().toString());
+    LOGGER.info("\n searchCity(): searchContent [" + searchContent + "] \n DSL  = \n " + searchQuery.getQuery().toString());
 
-        Page<City> searchPageResults = cityRepository.search(searchQuery);
-        return searchPageResults.getContent();
-    }
+    Page<City> searchPageResults = cityRepository.search(searchQuery);
+    return searchPageResults.getContent();
+  }
 
 }

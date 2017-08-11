@@ -7,17 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 统一错误码异常处理
- *
+ * <p>
  * Created by bysocket on 14/03/2017.
  */
 @RestControllerAdvice
-public class GlobalErrorInfoHandler {
+public class GlobalErrorInfoHandler
+{
 
-    @ExceptionHandler(value = GlobalErrorInfoException.class)
-    public ResultBody errorHandlerOverJson(HttpServletRequest request,
-                                           GlobalErrorInfoException exception) {
-        ErrorInfoInterface errorInfo = exception.getErrorInfo();
-        ResultBody result = new ResultBody(errorInfo);
-        return result;
-    }
+  @ExceptionHandler(value = GlobalErrorInfoException.class)
+  public ResultBody errorHandlerOverJson(HttpServletRequest request, GlobalErrorInfoException exception)
+  {
+    ErrorInfoInterface errorInfo = exception.getErrorInfo();
+    ResultBody result = new ResultBody(errorInfo);
+    return result;
+  }
 }

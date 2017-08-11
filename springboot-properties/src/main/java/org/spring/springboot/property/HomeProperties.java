@@ -6,58 +6,62 @@ import org.springframework.stereotype.Component;
 
 /**
  * 家乡属性
- *
+ * <p>
  * Created by bysocket on 17/04/2017.
  */
 @Component
 @ConfigurationProperties(prefix = "home")
-public class HomeProperties {
+public class HomeProperties
+{
 
-    /**
-     * 省份
-     */
-    private String province;
+  /**
+   * 省份
+   */
+  private String province;
 
-    /**
-     * 城市
-     */
-    private String city;
+  /**
+   * 城市
+   */
+  private String city;
 
-    /**
-     * 描述
-     */
-    private String desc;
+  /**
+   * 描述
+   */
+  private String desc;
 
-    public String getProvince() {
-        return province;
-    }
+  public String getProvince()
+  {
+    return province;
+  }
 
-    public void setProvince(String province) {
-        this.province = province;
-    }
+  public void setProvince(String province)
+  {
+    this.province = province;
+  }
 
-    public String getCity() {
-        return city;
-    }
+  public String getCity()
+  {
+    return city;
+  }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+  public void setCity(String city)
+  {
+    this.city = city;
+  }
 
-    public String getDesc() {
-        return desc;
-    }
+  public String getDesc()
+  {
+    return desc;
+  }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
+  public void setDesc(String desc)
+  {
+    this.desc = desc;
+  }
 
-    @Override
-    public String toString() {
-        return "HomeProperties{" +
-                "province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", desc='" + desc + '\'' +
-                '}';
-    }
+  @Override
+  public String toString()
+  {
+    return "HomeProperties{" + "province='" + province + '\'' + ", city='" + city + '\'' + ", desc='" + desc + '\'' + '}';
+  }
 }

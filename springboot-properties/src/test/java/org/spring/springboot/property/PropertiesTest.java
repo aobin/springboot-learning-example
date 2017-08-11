@@ -16,24 +16,27 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PropertiesTest {
+public class PropertiesTest
+{
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesTest.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesTest.class);
 
-    @Autowired
-    private UserProperties userProperties;
+  @Autowired
+  private UserProperties userProperties;
 
-    @Autowired
-    private HomeProperties homeProperties;
+  @Autowired
+  private HomeProperties homeProperties;
 
-    @Test
-    public void getHomeProperties() {
-        LOGGER.info("\n\n" + homeProperties.toString() + "\n");
-    }
+  @Test
+  public void getHomeProperties()
+  {
+    LOGGER.info("\n\n" + homeProperties.toString() + "\n");
+  }
 
-    @Test
-    public void randomTestUser() {
-        LOGGER.info("\n\n" + userProperties.toString() + "\n");
-    }
+  @Test
+  public void randomTestUser()
+  {
+    LOGGER.info("\n\n" + userProperties.toString() + "\n");
+  }
 
 }

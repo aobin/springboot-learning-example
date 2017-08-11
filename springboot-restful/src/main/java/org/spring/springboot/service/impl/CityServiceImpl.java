@@ -10,36 +10,42 @@ import java.util.List;
 
 /**
  * 城市业务逻辑实现类
- *
+ * <p>
  * Created by bysocket on 07/02/2017.
  */
 @Service
-public class CityServiceImpl implements CityService {
+public class CityServiceImpl implements CityService
+{
 
-    @Autowired
-    private CityDao cityDao;
+  @Autowired
+  private CityDao cityDao;
 
-    public List<City> findAllCity(){
-        return cityDao.findAllCity();
-    }
+  public List<City> findAllCity()
+  {
+    return cityDao.findAllCity();
+  }
 
-    public City findCityById(Long id) {
-        return cityDao.findById(id);
-    }
+  public City findCityById(Long id)
+  {
+    return cityDao.findById(id);
+  }
 
-    @Override
-    public Long saveCity(City city) {
-        return cityDao.saveCity(city);
-    }
+  @Override
+  public Long saveCity(City city)
+  {
+    return cityDao.saveCity(city);
+  }
 
-    @Override
-    public Long updateCity(City city) {
-        return cityDao.updateCity(city);
-    }
+  @Override
+  public Long updateCity(City city)
+  {
+    return cityDao.updateCity(city);
+  }
 
-    @Override
-    public Long deleteCity(Long id) {
-        return cityDao.deleteCity(id);
-    }
+  @Override
+  public Long deleteCity(Long id)
+  {
+    return cityDao.deleteCity(id);
+  }
 
 }
